@@ -10,12 +10,11 @@
 3. **RentSmart** - An app for first-time renters that allows users to scan or upload a lease, and AI will flag sketchy or unfair clauses, explain confusing legal terms, and scores the overall lease. Can also provide negotiation scrips, landlord reputation scores, compares rent prices in the area, and provides a move-in checklist.
 
 ## App Ideas - Ossama Elborki
-1. Idea 1
-2. Idea 2
-3. Idea 3
+1. **Grubventure** - A restaurant discovery app for indecisive eaters. Users set filters like cuisine, price, and distance and then spin a wheel that randomly picks a restaurant nearby. Has a group mode where everyone votes on filters and the wheel picks something everyone agreed on.
+2. **ReadingCircle** - A social book club app for friend groups and strangers with shared taste. Users create or join a reading circle, vote on the next book as a group, and follow a shared reading schedule with chapter milestones. Has a threaded discussion board per chapter so people can post reactions as they read without spoiling others who are behind.
+3. **GainTrack** - A fitness companion app where users log every workout with sets, reps, and weight, search a food database to log meals and track daily macros, and set personalized goals for calories, protein, carbs, and fat based on their body stats and target. Tracks progressive overload on every lift and adjusts nutrition targets weekly based on real weight trends so your plan always reflects your actual progress.
 
 ## App Ideas - Nowshin Hoque
-
 1. Idea 1
 2. Idea 2
 3. Idea 3
