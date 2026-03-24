@@ -85,15 +85,16 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ##Digital Wireframe
 
-  <img src="https://image2url.com/r2/default/images/1774317372639-8743e853-6fac-404b-9680-9c706146ffe9.png" width=600>
+<img src="https://image2url.com/r2/default/images/1774317372639-8743e853-6fac-404b-9680-9c706146ffe9.png" width=600>
  
-  <img src="https://image2url.com/r2/default/images/1774317372639-8743e853-6fac-404b-9680-9c706146ffe9.png)](https://image2url.com/r2/default/images/1774317402131-10995fa5-c08b-4584-b0db-1babdddedede.png" width=600>
+<img src="https://image2url.com/r2/default/images/1774317372639-8743e853-6fac-404b-9680-9c706146ffe9.png)](https://image2url.com/r2/default/images/1774317402131-10995fa5-c08b-4584-b0db-1babdddedede.png" width=600>
   
-  <img src="https://image2url.com/r2/default/images/1774317478262-e4de1344-bb11-4e50-8f5f-6a321fba33ef.png" width=600>
+<img src="https://image2url.com/r2/default/images/1774317478262-e4de1344-bb11-4e50-8f5f-6a321fba33ef.png" width=600>
   
-  <img src="https://image2url.com/r2/default/images/1774317509456-9ee19216-06e2-476e-9dba-bb327fa82984.png" width=600>
+<img src="https://image2url.com/r2/default/images/1774317509456-9ee19216-06e2-476e-9dba-bb327fa82984.png" width=600>
 
-   <img src=" https://image2url.com/r2/default/images/1774317602155-03fe83e6-3d5f-4d7a-8606-10f6fd7f6716.png" width=600>
+<img src=" https://image2url.com/r2/default/images/1774317602155-03fe83e6-3d5f-4d7a-8606-10f6fd7f6716.png" width=600>
+
 
 
 
