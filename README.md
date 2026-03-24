@@ -81,9 +81,9 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 * **Add Medication Screen** $\rightarrow$ Submit $\rightarrow$ **Interaction Alert Screen** (if a conflict is found)
 * **Health Log Screen** $\rightarrow$ Click "New Entry" $\rightarrow$ **Symptom Entry Form**
 
-## Wireframes
+### Wireframes
 
-##Digital Wireframe
+###Digital Wireframe
 
 
 <img width="428" height="800" alt="Login_Signup" src="https://github.com/user-attachments/assets/933eef8d-4411-402a-b0ff-abc9a0aec684" />
