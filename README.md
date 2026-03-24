@@ -42,19 +42,22 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ### 1. User Features (Required and Optional)
 **Required Features**
-* **Medication Logging:** User can enter drug name, dosage, and frequency.
+* **User Authentication:** Sign-up and Login functionality (Email/Password or Google Auth) to secure private health data.
+* * **Medication Logging:** User can enter drug name, dosage, and frequency.
 * **Scheduling & Notifications:** Automated push alerts triggered at specific times to remind the user to take their medicine.
 * **Dose Confirmation:** A simple "Mark as Taken" button within the notification or app to log adherence.
 * **Symptom Journal:** A daily log where users can record how they feel (e.g., "Dizzy," "Nauseous," "Energetic").
-* **Drug Interaction Check:** Automated warning if a newly added drug conflicts with an existing one in the list via API.
+ 
 
 **Optional Features**
 * **OCR Scanner:** Use the camera to scan a prescription bottle and auto-fill the drug name/info.
 * **Caregiver Sync:** Ability to email or share a weekly adherence report with a doctor or family member.
 * **Refill Reminders:** Notifies the user when their pill count is low based on the doses taken.
+* **Drug Interaction Check:** Automated warning if a newly added drug conflicts with an existing one in the list via API.
 
 ### 2. Screen Archetypes
 
+* **Log In/Sign Up:** User authentication screens to access the profile.
 * **Dashboard/Home:** Displays the "Next Dose" countdown and a daily checklist of medications.
 * **Medication Library:** A list of all current prescriptions where users can add, edit, or delete entries.
 * **Add Medication:** A form-based screen to input drug details and set the schedule.
@@ -70,6 +73,9 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 * **Settings:** Manage user profile and notification preferences.
 
 **Flow Navigation (Screen to Screen)**
+
+* **Launch App** $\rightarrow$ If not logged in $\rightarrow$ **Login/Sign Up Screen**
+* **Login/Sign Up** $\rightarrow$ Successfully Authenticated $\rightarrow$ **Home Screen**
 * **Home Screen** $\rightarrow$ Click "Add" $\rightarrow$ **Add Medication Screen**
 * **My Meds Screen** $\rightarrow$ Click specific drug $\rightarrow$ **Medication Details/Edit Screen**
 * **Add Medication Screen** $\rightarrow$ Submit $\rightarrow$ **Interaction Alert Screen** (if a conflict is found)
