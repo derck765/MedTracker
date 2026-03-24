@@ -83,7 +83,9 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ### Wireframes
 
-###Digital Wireframe
+
+
+### Digital Wireframes
 
 
 <img width="428" height="800" alt="Login_Signup" src="https://github.com/user-attachments/assets/933eef8d-4411-402a-b0ff-abc9a0aec684" />
