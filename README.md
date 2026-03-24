@@ -85,21 +85,15 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ##Digital Wireframe
 
-<img src="https://image2url.com/r2/default/images/1774317372639-8743e853-6fac-404b-9680-9c706146ffe9.png" width=600>
- 
-<img src="https://image2url.com/r2/default/images/1774317372639-8743e853-6fac-404b-9680-9c706146ffe9.png)](https://image2url.com/r2/default/images/1774317402131-10995fa5-c08b-4584-b0db-1babdddedede.png" width=600>
-  
-<img src="https://image2url.com/r2/default/images/1774317478262-e4de1344-bb11-4e50-8f5f-6a321fba33ef.png" width=600>
-  
-<img src="https://image2url.com/r2/default/images/1774317509456-9ee19216-06e2-476e-9dba-bb327fa82984.png" width=600>
 
-<img src=" https://image2url.com/r2/default/images/1774317602155-03fe83e6-3d5f-4d7a-8606-10f6fd7f6716.png" width=600>
+<img width="428" height="800" alt="Login_Signup" src="https://github.com/user-attachments/assets/933eef8d-4411-402a-b0ff-abc9a0aec684" />
 
+<img width="420" height="803" alt="dash" src="https://github.com/user-attachments/assets/8cac2020-ccc8-4ac2-864e-b8c514e6c71b" />
 
+<img width="423" height="806" alt="Meds" src="https://github.com/user-attachments/assets/8c6aaafb-093b-48fa-b3a8-23f54fbd1f73" />
 
+<img width="1531" height="867" alt="add_meds" src="https://github.com/user-attachments/assets/0d3980f7-fbd0-451e-b938-d63e4e61852d" />
 
-  
-
-
+<img width="430" height="806" alt="symtoms" src="https://github.com/user-attachments/assets/de622019-d6c3-4111-a6a5-2109f8c3f6a6" />
 
 <br>
