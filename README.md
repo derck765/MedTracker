@@ -92,5 +92,6 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 <img width="200" alt="Medications" src="https://github.com/user-attachments/assets/8c6aaafb-093b-48fa-b3a8-23f54fbd1f73" />
 <img width="200" alt="Symptoms" src="https://github.com/user-attachments/assets/de622019-d6c3-4111-a6a5-2109f8c3f6a6" />
 <img width="200" height="446" alt="Screenshot 2026-03-23 220846" src="https://github.com/user-attachments/assets/4b109db7-0278-4fb5-9744-8e7e6eaef615" />
-<img width="1533" height="252" alt="Screenshot 2026-03-23 221017" src="https://github.com/user-attachments/assets/4c2e21bf-b6ab-4e98-bc16-6db598615471" />
+<img width="820" height="252" alt="Screenshot 2026-03-23 221017" src="https://github.com/user-attachments/assets/4c2e21bf-b6ab-4e98-bc16-6db598615471" />
 <img width="820" height="867" alt="add_meds" src="https://github.com/user-attachments/assets/0d3980f7-fbd0-451e-b938-d63e4e61852d" />
+
