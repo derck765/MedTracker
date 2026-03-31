@@ -2,4 +2,25 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- MedTracker -->
+    <color name="md_primary">#5D3FD3</color>
+    <color name="md_on_primary">#FFFFFFFF</color>
+    <color name="md_primary_container">#EDE9FE</color>
+    <color name="md_on_primary_container">#2E1065</color>
+    <color name="md_surface">#FFFFFF</color>
+    <color name="md_on_surface">#191C1C</color>
+    <color name="md_surface_variant">#E7E0EC</color>
+    <color name="md_on_surface_variant">#49454F</color>
+    <color name="bg_screen">#F5F5F7</color>
+    <color name="bg_login_gradient_start">#E8E0F5</color>
+    <color name="bg_login_gradient_end">#EEF2FF</color>
+    <color name="input_fill">#F0F0F3</color>
+    <color name="navy_button">#0F172A</color>
+    <color name="outline_variant">#CAC4D0</color>
+    <color name="next_dose_card_tint">#EDE9FE</color>
+    <color name="taken_green_bg">#E8F5E9</color>
+    <color name="taken_green">#2E7D32</color>
+    <color name="pending_blue">#1565C0</color>
+    <color name="error_delete">#D32F2F</color>
 </resources>

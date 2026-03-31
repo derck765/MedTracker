@@ -1,3 +1,62 @@
 <resources>
-    <string name="app_name">MedTrack</string>
+    <string name="app_name">MedTracker</string>
+
+    <string name="tagline">Never miss a dose. Track your health journey.</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="hint_email">your@email.com</string>
+    <string name="login_demo_footer">Demo: Use any email/password to create an account</string>
+    <string name="error_email_required">Enter your email</string>
+    <string name="error_password_short">Password must be at least 6 characters</string>
+    <string name="error_invalid_email">Enter a valid email address</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_my_meds">My Meds</string>
+    <string name="nav_health_log">Health Log</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="welcome_back">Welcome back, %1$s!</string>
+    <string name="next_dose">Next Dose</string>
+    <string name="from_now">%1$s from now</string>
+    <string name="mark_as_taken">Mark as Taken</string>
+    <string name="todays_progress">Today\'s Progress</string>
+    <string name="adherence_rate">Adherence Rate</string>
+    <string name="taken_count">%1$d taken</string>
+    <string name="pending_count">%1$d pending</string>
+    <string name="medication_checklist_title">Today\'s Medication Checklist</string>
+    <string name="doses_scheduled">%1$d doses scheduled</string>
+    <string name="mark_taken">Mark Taken</string>
+    <string name="taken_badge">Taken</string>
+
+    <string name="my_medications_title">My Medications</string>
+    <string name="my_medications_subtitle">Manage your medication library.</string>
+    <string name="add_medication">+ Add Medication</string>
+    <string name="search_medications">Search medications…</string>
+    <string name="add_medication_toast">Add medication flow can connect to Firestore next.</string>
+    <string name="daily">Daily</string>
+    <string name="cd_edit_medication">Edit medication</string>
+    <string name="cd_delete_medication">Delete medication</string>
+
+    <string name="health_journal_title">Health Journal</string>
+    <string name="health_journal_subtitle">Track your symptoms and health trends.</string>
+    <string name="new_entry">New Entry</string>
+    <string name="total_entries">Total Entries</string>
+    <string name="last_7_days">Last 7 days</string>
+    <string name="average_severity">Average Severity</string>
+    <string name="out_of_five">Out of 5.0</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_subtitle">Manage your account and preferences</string>
+    <string name="profile_information">Profile Information</string>
+    <string name="label_name">Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_user_id">User ID</string>
+    <string name="notifications">Notifications</string>
+    <string name="notifications_desc">Configure how you receive medication reminders</string>
+
+    <string name="logout_content_desc">Log out</string>
+    <string name="next_dose_format">Next: %1$s</string>
+    <string name="medication_dosage_line">%1$s · %2$s</string>
 </resources>

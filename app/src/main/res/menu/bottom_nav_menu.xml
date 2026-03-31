@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_24"
+        android:title="@string/nav_home" />
+    <item
+        android:id="@+id/myMedsFragment"
+        android:icon="@drawable/ic_health_plus_24"
+        android:title="@string/nav_my_meds" />
+    <item
+        android:id="@+id/healthLogFragment"
+        android:icon="@drawable/ic_show_chart_24"
+        android:title="@string/nav_health_log" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_24"
+        android:title="@string/nav_settings" />
+</menu>

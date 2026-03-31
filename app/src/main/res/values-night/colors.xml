@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="md_primary">#B794F6</color>
+    <color name="md_on_primary">#1A0D3A</color>
+    <color name="md_primary_container">#3D2A5C</color>
+    <color name="md_on_primary_container">#E9D5FF</color>
+    <color name="md_surface">#141218</color>
+    <color name="md_on_surface">#E6E1E9</color>
+    <color name="md_surface_variant">#49454F</color>
+    <color name="md_on_surface_variant">#CAC4D0</color>
+    <color name="bg_screen">#0F0D13</color>
+    <color name="input_fill">#2B2930</color>
+    <color name="outline_variant">#49454F</color>
+    <color name="next_dose_card_tint">#2D2640</color>
+    <color name="taken_green_bg">#1B3D24</color>
+    <color name="taken_green">#81C784</color>
+    <color name="pending_blue">#64B5F6</color>
+    <color name="navy_button">#1E293B</color>
+</resources>

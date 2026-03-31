@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.njit.medtrack.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/myMedsFragment"
+        android:name="com.njit.medtrack.MyMedsFragment"
+        android:label="@string/nav_my_meds"
+        tools:layout="@layout/fragment_my_meds" />
+
+    <fragment
+        android:id="@+id/healthLogFragment"
+        android:name="com.njit.medtrack.HealthLogFragment"
+        android:label="@string/nav_health_log"
+        tools:layout="@layout/fragment_health_log" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.njit.medtrack.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
