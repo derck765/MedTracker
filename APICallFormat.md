@@ -1,4 +1,4 @@
-##RxNorm
+## RxNorm
 **Purpose:** Convert generic name to RxCUI to avoid confusion between different brands of the same drug
 **Call:** https://rxnav.nlm.nih.gov/REST/rxcui.json?name=advil
 **Format:** 
@@ -10,7 +10,7 @@
   }
 }
 
-##RxCUI
+## RxCUI
 **Purpose:** Convert RxCUI to standardized name
 **Call:** https://rxnav.nlm.nih.gov/REST/rxcui/153010/related.json?tty=IN
 **Format:** 
@@ -36,7 +36,7 @@
   }
 }
 
-##OpenFDA
+## OpenFDA
 **Purpose:** Use drug name to get drug information
 **Call:** https://api.fda.gov/drug/label.json?search=openfda.generic_name:ibuprofen&limit=1
 **Format:**
