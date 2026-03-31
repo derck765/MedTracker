@@ -1,5 +1,6 @@
 ## RxNorm
 - **Purpose:** Convert generic name to RxCUI to avoid confusion between different brands of the same drug
+- **Example:** Advil --> 153010
 - **Call:** https://rxnav.nlm.nih.gov/REST/rxcui.json?name=advil
 - **Format:**
 ```{
@@ -12,6 +13,7 @@
 ```
 ## RxCUI
 - **Purpose:** Convert RxCUI to standardized name
+- **Example:** 153010 --> Ibuprofen
 - **Call:** https://rxnav.nlm.nih.gov/REST/rxcui/153010/related.json?tty=IN
 - **Format:** 
 ```{
