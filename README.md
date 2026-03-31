@@ -3,6 +3,7 @@
 GIF: https://discord.com/channels/1484038486746206288/1484038487945646182/1488358109826121840
 
 User Stories Completed:
+
 ✅ Setup Android Project and Configured Dependencies
 
 ✅ Designed XML Layouts for all App Screens
