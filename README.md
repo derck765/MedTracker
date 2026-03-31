@@ -108,11 +108,11 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ## Issues Worked on This Sprint
 
-- Set up Android project and configured dependencies
-- Designed XML layouts for all app screens
-- Implemented bottom tab navigation between main screens
-- Researched Drug Interaction and Pharmacy APIs (RxNorm, RxCUI, OpenFDA)
-- Researched Firestore database structure for MedTrack
+Set up Android project and configured dependencies
+- [X] Designed XML layouts for all app screens
+- [X] Implemented bottom tab navigation between main screens
+- [X] Researched Drug Interaction and Pharmacy APIs (RxNorm, RxCUI, OpenFDA)
+- [X] Researched Firestore database structure for MedTrack
 
 ![progress1](https://github.com/user-attachments/assets/42d716e1-0c64-4bc5-97c2-e79fce7438b6)
 
