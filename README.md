@@ -40,7 +40,7 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 * Includes a symptom checker/logger where users can note how they feel daily to track side effects or recovery progress over time.
 
-* Integrates a pharmacy API to automatically flag potentially dangerous drug-to-drug interactions based on the user's active medication list.
+* Integrates RxNorm, RxCUI, and OpenFDA APIs to automatically flag potentially dangerous drug-to-drug interactions based on the user's active medication list.
 
 ### Evaluation
 
