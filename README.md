@@ -1,19 +1,3 @@
-# Milestone 2 - MedTrack
-
-GIF: https://discord.com/channels/1484038486746206288/1484038487945646182/1488358109826121840
-
-User Stories Completed:
-
-✅ Setup Android Project and Configured Dependencies
-
-✅ Designed XML Layouts for all App Screens
-
-✅ Implemented Bottom Tab Navigation Between Main Screens
-
-✅ Research: Drug Interaction and Pharmacy APIs
-
-✅ Research: Firestore Database Structure for MedTrack
-
 # Milestone 1 - MedTrack (Unit 7)
 
 ## Table of Contents
@@ -113,3 +97,23 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 <img width="820" height="252" alt="Screenshot 2026-03-23 221017" src="https://github.com/user-attachments/assets/4c2e21bf-b6ab-4e98-bc16-6db598615471" />
 <img width="820" height="867" alt="add_meds" src="https://github.com/user-attachments/assets/0d3980f7-fbd0-451e-b938-d63e4e61852d" />
 
+# Milestone 2 - Build Sprint 1 (Unit 8)
+
+## GitHub Project Board
+<img width="1918" height="867" alt="milestones" src="https://github.com/user-attachments/assets/06cacda2-cc17-4ec2-b4fb-1ff0a58d3be2" />
+
+
+## Issue Cards - Screenshot of Completed Sprint 1 Tasks and Tasks Planned for Next Sprint
+<img width="1918" height="867" alt="sprint1" src="https://github.com/user-attachments/assets/ac35b95e-70f2-4a55-8b53-2bd7ae6f9aa9" />
+
+## Issues Worked on This Sprint
+
+- Set up Android project and configured dependencies
+- Designed XML layouts for all app screens
+- Implemented bottom tab navigation between main screens
+- Researched Drug Interaction and Pharmacy APIs (RxNorm, RxCUI, OpenFDA)
+- Researched Firestore database structure for MedTrack
+
+![progress1](https://github.com/user-attachments/assets/42d716e1-0c64-4bc5-97c2-e79fce7438b6)
+
+<br>
