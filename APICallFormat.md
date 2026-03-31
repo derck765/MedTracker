@@ -1,10 +1,7 @@
 ## RxNorm
-**Purpose:** Convert generic name to RxCUI to avoid confusion between different brands of the same drug
-
-**Call:** https://rxnav.nlm.nih.gov/REST/rxcui.json?name=advil
-
-**Format:**
-
+- **Purpose:** Convert generic name to RxCUI to avoid confusion between different brands of the same drug
+- **Call:** https://rxnav.nlm.nih.gov/REST/rxcui.json?name=advil
+- **Format:**
 {
   "idGroup": {
     "rxnormId": [
@@ -14,12 +11,9 @@
 }
 
 ## RxCUI
-**Purpose:** Convert RxCUI to standardized name
-
-**Call:** https://rxnav.nlm.nih.gov/REST/rxcui/153010/related.json?tty=IN
-
-**Format:** 
-
+- **Purpose:** Convert RxCUI to standardized name
+- **Call:** https://rxnav.nlm.nih.gov/REST/rxcui/153010/related.json?tty=IN
+- **Format:** 
 {
   "relatedGroup": {
     "rxcui": null,
@@ -43,12 +37,9 @@
 }
 
 ## OpenFDA
-**Purpose:** Use drug name to get drug information
-
-**Call:** https://api.fda.gov/drug/label.json?search=openfda.generic_name:ibuprofen&limit=1
-
-**Format:**
-
+- **Purpose:** Use drug name to get drug information
+- **Call:** https://api.fda.gov/drug/label.json?search=openfda.generic_name:ibuprofen&limit=1
+- **Format:**
 {
   "meta": {
     "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
