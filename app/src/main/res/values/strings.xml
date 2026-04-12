@@ -34,7 +34,7 @@
     <string name="my_medications_subtitle">Manage your medication library.</string>
     <string name="add_medication">+ Add Medication</string>
     <string name="search_medications">Search medications…</string>
-    <string name="add_medication_toast">Add medication flow can connect to Firestore next.</string>
+    <string name="add_medication_toast">Add medication — coming soon.</string>
     <string name="daily">Daily</string>
     <string name="cd_edit_medication">Edit medication</string>
     <string name="cd_delete_medication">Delete medication</string>
@@ -59,4 +59,30 @@
     <string name="logout_content_desc">Log out</string>
     <string name="next_dose_format">Next: %1$s</string>
     <string name="medication_dosage_line">%1$s · %2$s</string>
+
+    <string name="empty_medications">No medications yet.\nTap + Add Medication to get started.</string>
+    <string name="empty_health_log">No entries yet.\nTap New Entry to log your symptoms.</string>
+    <string name="error_load_medications">Failed to load medications.</string>
+    <string name="error_load_entries">Failed to load entries.</string>
+    <string name="severity_label">Severity: %1$d/5</string>
+
+    <!-- Add Medication dialog -->
+    <string name="dialog_title_add_medication">Add Medication</string>
+    <string name="hint_med_name">Name *</string>
+    <string name="hint_med_dosage">Dosage (e.g. 500 mg)</string>
+    <string name="hint_med_time">Schedule time (e.g. 8:00 AM)</string>
+    <string name="hint_med_tags">Tags</string>
+    <string name="helper_med_tags">Separate with commas</string>
+    <string name="hint_med_notes">Notes</string>
+    <string name="error_name_required">Name is required</string>
+
+    <!-- Add Health Log Entry dialog -->
+    <string name="dialog_title_add_entry">New Health Log Entry</string>
+    <string name="hint_symptoms">Symptoms *</string>
+    <string name="label_severity">Severity (1 = mild, 5 = severe)</string>
+    <string name="severity_value_default">3 / 5</string>
+    <string name="severity_value_format">%d / 5</string>
+    <string name="hint_entry_notes">Notes</string>
+    <string name="error_symptoms_required">Symptoms are required</string>
+    <string name="action_save">Save</string>
 </resources>

@@ -1,7 +1,12 @@
 package com.njit.medtrack
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "medications")
 data class Medication(
-    val id: String,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0L,
+    val userId: String = "",
     val name: String,
     val dosage: String,
     val scheduleTime: String,
