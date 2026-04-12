@@ -1,6 +1,7 @@
 package com.njit.medtrack
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -119,8 +120,10 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
                 )
                 viewLifecycleOwner.lifecycleScope.launch {
                     val result = repo.addMedication(medication)
-                    result.onFailure {
-                        Snackbar.make(root, "Could not save medication", Snackbar.LENGTH_SHORT).show()
+                    result.onFailure { e ->
+                        Log.e("MyMedsFragment", "Could not save medication", e)
+                        val msg = e.message ?: e::class.java.simpleName
+                        Snackbar.make(root, "Could not save medication: $msg", Snackbar.LENGTH_LONG).show()
                     }
                 }
                 dialog.dismiss()
