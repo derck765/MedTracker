@@ -118,7 +118,7 @@ Set up Android project and configured dependencies
 
 <br>
 
-Milestone 3 - Build Sprint 2 (Unit 9)
+## Milestone 3 - Build Sprint 2 (Unit 9)
 GitHub Project board
 <img width="3565" height="1930" alt="image" src="https://github.com/user-attachments/assets/7878849e-9d59-4033-8eb6-f9b304740a0e" />
 
