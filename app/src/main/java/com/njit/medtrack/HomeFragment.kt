@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -26,10 +24,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val user = Firebase.auth.currentUser
-        val display = user?.email?.substringBefore("@").orEmpty().ifBlank { "there" }
         view.findViewById<TextView>(R.id.text_welcome).text =
-            getString(R.string.welcome_back, display)
+            getString(R.string.welcome_back, "there")
 
         val dateFmt = SimpleDateFormat("EEEE, MMMM d, yyyy", Locale.US)
         view.findViewById<TextView>(R.id.text_date).text = dateFmt.format(Date())
