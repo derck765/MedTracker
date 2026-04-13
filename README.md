@@ -117,3 +117,33 @@ Set up Android project and configured dependencies
 ![progress1](https://github.com/user-attachments/assets/42d716e1-0c64-4bc5-97c2-e79fce7438b6)
 
 <br>
+
+Milestone 3 - Build Sprint 2 (Unit 9)
+GitHub Project board
+<img width="3565" height="1930" alt="image" src="https://github.com/user-attachments/assets/7878849e-9d59-4033-8eb6-f9b304740a0e" />
+
+Completed user stories
+- Implement Functionality for adding New Medications
+- Implement Dose Confirmation ("Mark as Taken") Functionality
+- Implement Navigation Between Screens
+- Set up Local Room Database (Medication & Symptom Entry Entities)
+- Setup Database to Medication & Symptom UI
+- Implement Dashboard / Home Screen Functionality
+
+List any pending user stories / any user stories you decided to cut from the original requirements
+
+One change to a user story during this sprint was to implement a local Room database, opposed to using Firebase for user authentication. This was due to concerns over patient data security with sensitive medical information.
+
+In addition, we have several remaining user stories for Sprint 3:
+- Implement Scheduling and Push Notifications
+- Unit Tests
+- Integration Tests
+- Implement Drug Interaction Check (API Integration)
+- Implement Settings Screen
+- UI Polish and Bug Fixes
+- AI-based OCR Scanning for Adding New Medications
+
+![Screen_recording_20260413_194958-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1ebeff14-8593-48be-b0f1-38a36874a8ae)
+
+App Demo Video
+Embed the YouTube/Vimeo link of your Completed Demo Day prep video
