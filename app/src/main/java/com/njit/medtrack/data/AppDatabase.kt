@@ -7,12 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.njit.medtrack.Medication
 
-@Database(entities = [Medication::class, SymptomEntry::class], version = 2)
+@Database(entities = [Medication::class, SymptomEntry::class, DoseLog::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun medicationDao(): MedicationDao
     abstract fun healthLogDao(): HealthLogDao
+    abstract fun doseLogDao(): DoseLogDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
