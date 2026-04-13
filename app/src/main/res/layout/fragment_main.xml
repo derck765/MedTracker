@@ -43,20 +43,6 @@
             android:textColor="?attr/colorOnSurface"
             android:textStyle="bold" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/button_logout"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/logout_content_desc"
-            android:padding="12dp"
-            android:src="@drawable/ic_logout_24"
-            app:tint="?attr/colorOnSurfaceVariant" />
     </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
