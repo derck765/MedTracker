@@ -146,4 +146,4 @@ In addition, we have several remaining user stories for Sprint 3:
 ![Screen_recording_20260413_194958-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1ebeff14-8593-48be-b0f1-38a36874a8ae)
 
 App Demo Video
-Embed the YouTube/Vimeo link of your Completed Demo Day prep video
+https://youtu.be/kwncg9vFw0w 
