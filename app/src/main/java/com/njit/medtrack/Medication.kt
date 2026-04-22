@@ -9,6 +9,7 @@ data class Medication(
     val name: String,
     val dosage: String,
     val scheduleTime: String,
+    val frequency: String = "Daily",
     val tags: List<String>,
     val notes: String,
 )

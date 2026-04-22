@@ -13,8 +13,11 @@ interface MedicationDao {
     fun watchAll(): Flow<List<Medication>>
 
     @Insert
-    suspend fun insert(medication: Medication)
+    suspend fun insert(medication: Medication): Long
 
     @Query("DELETE FROM medications WHERE id = :id")
     suspend fun deleteById(id: Long)
+
+    @Query("SELECT * FROM medications")
+    suspend fun getAll(): List<Medication>
 }

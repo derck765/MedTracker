@@ -87,8 +87,15 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         val inputName = dialogView.findViewById<TextInputEditText>(R.id.input_med_name)
         val inputDosage = dialogView.findViewById<TextInputEditText>(R.id.input_med_dosage)
         val inputTime = dialogView.findViewById<TextInputEditText>(R.id.input_med_time)
+        val inputFrequency = dialogView.findViewById<android.widget.AutoCompleteTextView>(R.id.input_med_frequency)
         val inputTags = dialogView.findViewById<TextInputEditText>(R.id.input_med_tags)
         val inputNotes = dialogView.findViewById<TextInputEditText>(R.id.input_med_notes)
+
+        val frequencies = resources.getStringArray(R.array.medication_frequencies)
+        inputFrequency.setAdapter(
+            android.widget.ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, frequencies)
+        )
+        inputFrequency.setText(frequencies[0], false)
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.dialog_title_add_medication)
@@ -115,6 +122,7 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
                     name = name,
                     dosage = inputDosage.text?.toString()?.trim().orEmpty(),
                     scheduleTime = inputTime.text?.toString()?.trim().orEmpty(),
+                    frequency = inputFrequency.text?.toString()?.trim()?.ifEmpty { frequencies[0] } ?: frequencies[0],
                     tags = tags,
                     notes = inputNotes.text?.toString()?.trim().orEmpty(),
                 )

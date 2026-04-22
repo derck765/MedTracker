@@ -85,4 +85,39 @@
     <string name="hint_entry_notes">Notes</string>
     <string name="error_symptoms_required">Symptoms are required</string>
     <string name="action_save">Save</string>
+
+    <!-- Medication frequency -->
+    <string name="hint_med_frequency">Reminder Frequency</string>
+    <string name="freq_daily">Daily</string>
+    <string name="freq_twice_daily">Twice Daily</string>
+    <string name="freq_weekly">Weekly</string>
+    <string name="freq_as_needed">As Needed</string>
+
+    <!-- Medical Profile -->
+    <string name="medical_profile_title">Medical Profile</string>
+    <string name="medical_profile_desc">Store your medical history to share with healthcare providers</string>
+    <string name="medical_profile_empty">No profile saved yet. Tap Edit to add your information.</string>
+    <string name="action_edit_profile">Edit Profile</string>
+    <string name="action_share">Share</string>
+    <string name="dialog_title_edit_profile">Edit Medical Profile</string>
+    <string name="profile_section_personal">PERSONAL</string>
+    <string name="profile_section_medical">MEDICAL</string>
+    <string name="profile_section_emergency">EMERGENCY CONTACT</string>
+    <string name="profile_section_insurance">INSURANCE</string>
+    <string name="hint_profile_name">Full Name</string>
+    <string name="hint_profile_dob">Date of Birth (e.g. Jan 1, 1990)</string>
+    <string name="hint_profile_dob_short">Date of Birth</string>
+    <string name="hint_profile_blood_type">Blood Type</string>
+    <string name="hint_profile_allergies">Allergies</string>
+    <string name="hint_profile_conditions">Medical Conditions</string>
+    <string name="hint_profile_emergency_contact">Emergency Contact Name</string>
+    <string name="hint_profile_emergency_phone">Emergency Phone Number</string>
+    <string name="hint_profile_insurance_provider">Insurance Provider</string>
+    <string name="hint_profile_insurance_id">Insurance ID / Member #</string>
+    <string name="profile_blood_type_fmt">Blood Type: %1$s</string>
+    <string name="profile_allergies_fmt">Allergies: %1$s</string>
+    <string name="share_profile_subject">MedTrack Medical Profile</string>
+    <string name="notifications_enabled_toast">Reminders enabled</string>
+    <string name="notifications_disabled_toast">Reminders disabled</string>
+    <string name="notification_permission_rationale">Allow notifications so MedTrack can remind you to take your medications on time.</string>
 </resources>
