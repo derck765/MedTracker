@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="medication_frequencies">
+        <item>Daily</item>
+        <item>Twice Daily</item>
+        <item>Weekly</item>
+        <item>As Needed</item>
+    </string-array>
+
+    <string-array name="blood_types">
+        <item>A+</item>
+        <item>A−</item>
+        <item>B+</item>
+        <item>B−</item>
+        <item>AB+</item>
+        <item>AB−</item>
+        <item>O+</item>
+        <item>O−</item>
+        <item>Unknown</item>
+    </string-array>
+</resources>

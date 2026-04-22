@@ -7,13 +7,17 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.njit.medtrack.Medication
 
-@Database(entities = [Medication::class, SymptomEntry::class, DoseLog::class], version = 3)
+@Database(
+    entities = [Medication::class, SymptomEntry::class, DoseLog::class, MedicalProfile::class],
+    version = 4,
+)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun medicationDao(): MedicationDao
     abstract fun healthLogDao(): HealthLogDao
     abstract fun doseLogDao(): DoseLogDao
+    abstract fun medicalProfileDao(): MedicalProfileDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -24,7 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "medtrack.db",
-                ).fallbackToDestructiveMigration().build().also { INSTANCE = it }
+                ).fallbackToDestructiveMigration(true).build().also { INSTANCE = it }
             }
     }
 }
