@@ -66,8 +66,9 @@
     <string name="error_load_entries">Failed to load entries.</string>
     <string name="severity_label">Severity: %1$d/5</string>
 
-    <!-- Add Medication dialog -->
+    <!-- Add / Edit Medication dialog -->
     <string name="dialog_title_add_medication">Add Medication</string>
+    <string name="dialog_title_edit_medication">Edit Medication</string>
     <string name="hint_med_name">Name *</string>
     <string name="hint_med_dosage">Dosage (e.g. 500 mg)</string>
     <string name="hint_med_time">Schedule time (e.g. 8:00 AM)</string>
