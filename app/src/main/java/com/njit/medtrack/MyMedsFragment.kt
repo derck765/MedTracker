@@ -1,5 +1,6 @@
 package com.njit.medtrack
 
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,6 +20,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.njit.medtrack.data.MedicationRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
 
@@ -97,6 +99,8 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         )
         inputFrequency.setText(frequencies[0], false)
 
+        setupTimePicker(inputTime)
+
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.dialog_title_add_medication)
             .setView(dialogView)
@@ -163,6 +167,8 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         inputTags.setText(existing.tags.joinToString(", "))
         inputNotes.setText(existing.notes)
 
+        setupTimePicker(inputTime)
+
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.dialog_title_edit_medication)
             .setView(dialogView)
@@ -204,6 +210,35 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         }
 
         dialog.show()
+    }
+
+    private fun setupTimePicker(inputTime: TextInputEditText) {
+        inputTime.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val existing = inputTime.text?.toString()?.trim().orEmpty()
+            if (existing.isNotEmpty()) {
+                runCatching {
+                    val fmt = java.text.SimpleDateFormat("h:mm a", java.util.Locale.US)
+                    val date = fmt.parse(existing)
+                    if (date != null) cal.time = date
+                }
+            }
+            TimePickerDialog(
+                requireContext(),
+                { _, hour, minute ->
+                    val ampm = if (hour < 12) "AM" else "PM"
+                    val h = when {
+                        hour == 0 -> 12
+                        hour > 12 -> hour - 12
+                        else -> hour
+                    }
+                    inputTime.setText(String.format("%d:%02d %s", h, minute, ampm))
+                },
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE),
+                false,
+            ).show()
+        }
     }
 
     private fun applyFilter(q: String): List<Medication> =
