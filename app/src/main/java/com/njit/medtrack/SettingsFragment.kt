@@ -8,6 +8,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -209,6 +216,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         inputName.setText(currentProfile.fullName)
         inputDob.setText(currentProfile.dateOfBirth)
+        setupDatePicker(inputDob)
         inputBloodType.setText(currentProfile.bloodType, false)
         inputAllergies.setText(currentProfile.allergies)
         inputConditions.setText(currentProfile.conditions)
@@ -238,6 +246,42 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 }
             }
             .show()
+    }
+
+    private fun setupDatePicker(inputDob: TextInputEditText) {
+        inputDob.setOnClickListener {
+            val utc = TimeZone.getTimeZone("UTC")
+            val fmt = SimpleDateFormat("MMMM d, yyyy", Locale.US).apply { timeZone = utc }
+
+            val selCal = Calendar.getInstance(utc)
+            val existing = inputDob.text?.toString()?.trim().orEmpty()
+            if (existing.isNotEmpty()) {
+                runCatching {
+                    val date = fmt.parse(existing)
+                    if (date != null) selCal.time = date
+                }
+            }
+
+            val minCal = Calendar.getInstance(utc).apply { set(1900, Calendar.JANUARY, 1) }
+            val constraints = CalendarConstraints.Builder()
+                .setStart(minCal.timeInMillis)
+                .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
+                .setValidator(DateValidatorPointBackward.now())
+                .build()
+
+            val picker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Date of Birth")
+                .setSelection(selCal.timeInMillis)
+                .setCalendarConstraints(constraints)
+                .build()
+
+            picker.addOnPositiveButtonClickListener { selection ->
+                val picked = Calendar.getInstance(utc).apply { timeInMillis = selection }
+                inputDob.setText(fmt.format(picked.time))
+            }
+
+            picker.show(childFragmentManager, "dob_picker")
+        }
     }
 
     private fun buildShareText(profile: MedicalProfile): String = buildString {

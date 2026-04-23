@@ -1,5 +1,6 @@
 package com.njit.medtrack
 
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,6 +20,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.njit.medtrack.data.MedicationRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
 
@@ -37,7 +39,7 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
 
         adapter = MedicationAdapter(
             onOpen = { med -> Snackbar.make(view, med.name, Snackbar.LENGTH_SHORT).show() },
-            onEdit = { med -> Snackbar.make(view, "Edit ${med.name}", Snackbar.LENGTH_SHORT).show() },
+            onEdit = { med -> showEditMedicationDialog(view, med) },
             onDelete = { med ->
                 viewLifecycleOwner.lifecycleScope.launch {
                     val result = repo.deleteMedication(med.id)
@@ -97,6 +99,8 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         )
         inputFrequency.setText(frequencies[0], false)
 
+        setupTimePicker(inputTime)
+
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.dialog_title_add_medication)
             .setView(dialogView)
@@ -139,6 +143,102 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         }
 
         dialog.show()
+    }
+
+    private fun showEditMedicationDialog(root: View, existing: Medication) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_add_medication, null)
+        val layoutName = dialogView.findViewById<TextInputLayout>(R.id.layout_med_name)
+        val inputName = dialogView.findViewById<TextInputEditText>(R.id.input_med_name)
+        val inputDosage = dialogView.findViewById<TextInputEditText>(R.id.input_med_dosage)
+        val inputTime = dialogView.findViewById<TextInputEditText>(R.id.input_med_time)
+        val inputFrequency = dialogView.findViewById<android.widget.AutoCompleteTextView>(R.id.input_med_frequency)
+        val inputTags = dialogView.findViewById<TextInputEditText>(R.id.input_med_tags)
+        val inputNotes = dialogView.findViewById<TextInputEditText>(R.id.input_med_notes)
+
+        val frequencies = resources.getStringArray(R.array.medication_frequencies)
+        inputFrequency.setAdapter(
+            android.widget.ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, frequencies)
+        )
+
+        inputName.setText(existing.name)
+        inputDosage.setText(existing.dosage)
+        inputTime.setText(existing.scheduleTime)
+        inputFrequency.setText(existing.frequency, false)
+        inputTags.setText(existing.tags.joinToString(", "))
+        inputNotes.setText(existing.notes)
+
+        setupTimePicker(inputTime)
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.dialog_title_edit_medication)
+            .setView(dialogView)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(R.string.action_save, null)
+            .create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val name = inputName.text?.toString()?.trim().orEmpty()
+                if (name.isEmpty()) {
+                    layoutName.error = getString(R.string.error_name_required)
+                    return@setOnClickListener
+                }
+                layoutName.error = null
+                val tags = inputTags.text?.toString()
+                    ?.split(",")
+                    ?.map { it.trim() }
+                    ?.filter { it.isNotEmpty() }
+                    ?: emptyList()
+
+                val updated = existing.copy(
+                    name = name,
+                    dosage = inputDosage.text?.toString()?.trim().orEmpty(),
+                    scheduleTime = inputTime.text?.toString()?.trim().orEmpty(),
+                    frequency = inputFrequency.text?.toString()?.trim()?.ifEmpty { frequencies[0] } ?: frequencies[0],
+                    tags = tags,
+                    notes = inputNotes.text?.toString()?.trim().orEmpty(),
+                )
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val result = repo.updateMedication(updated)
+                    result.onFailure { e ->
+                        Log.e("MyMedsFragment", "Could not update medication", e)
+                        Snackbar.make(root, "Could not update ${existing.name}", Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+                dialog.dismiss()
+            }
+        }
+
+        dialog.show()
+    }
+
+    private fun setupTimePicker(inputTime: TextInputEditText) {
+        inputTime.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val existing = inputTime.text?.toString()?.trim().orEmpty()
+            if (existing.isNotEmpty()) {
+                runCatching {
+                    val fmt = java.text.SimpleDateFormat("h:mm a", java.util.Locale.US)
+                    val date = fmt.parse(existing)
+                    if (date != null) cal.time = date
+                }
+            }
+            TimePickerDialog(
+                requireContext(),
+                { _, hour, minute ->
+                    val ampm = if (hour < 12) "AM" else "PM"
+                    val h = when {
+                        hour == 0 -> 12
+                        hour > 12 -> hour - 12
+                        else -> hour
+                    }
+                    inputTime.setText(String.format("%d:%02d %s", h, minute, ampm))
+                },
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE),
+                false,
+            ).show()
+        }
     }
 
     private fun applyFilter(q: String): List<Medication> =

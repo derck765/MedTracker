@@ -38,6 +38,8 @@
     <string name="daily">Daily</string>
     <string name="cd_edit_medication">Edit medication</string>
     <string name="cd_delete_medication">Delete medication</string>
+    <string name="cd_edit_entry">Edit entry</string>
+    <string name="cd_delete_entry">Delete entry</string>
 
     <string name="health_journal_title">Health Journal</string>
     <string name="health_journal_subtitle">Track your symptoms and health trends.</string>
@@ -66,8 +68,9 @@
     <string name="error_load_entries">Failed to load entries.</string>
     <string name="severity_label">Severity: %1$d/5</string>
 
-    <!-- Add Medication dialog -->
+    <!-- Add / Edit Medication dialog -->
     <string name="dialog_title_add_medication">Add Medication</string>
+    <string name="dialog_title_edit_medication">Edit Medication</string>
     <string name="hint_med_name">Name *</string>
     <string name="hint_med_dosage">Dosage (e.g. 500 mg)</string>
     <string name="hint_med_time">Schedule time (e.g. 8:00 AM)</string>
@@ -78,6 +81,9 @@
 
     <!-- Add Health Log Entry dialog -->
     <string name="dialog_title_add_entry">New Health Log Entry</string>
+    <string name="dialog_title_edit_entry">Edit Entry</string>
+    <string name="confirm_delete_entry">Delete this health log entry?</string>
+    <string name="action_delete">Delete</string>
     <string name="hint_symptoms">Symptoms *</string>
     <string name="label_severity">Severity (1 = mild, 5 = severe)</string>
     <string name="severity_value_default">3 / 5</string>
