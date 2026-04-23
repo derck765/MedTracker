@@ -17,4 +17,18 @@ class HealthLogRepository(context: Context) {
     } catch (e: Exception) {
         Result.failure(e)
     }
+
+    suspend fun updateEntry(entry: SymptomEntry): Result<Unit> = try {
+        dao.update(entry)
+        Result.success(Unit)
+    } catch (e: Exception) {
+        Result.failure(e)
+    }
+
+    suspend fun deleteEntry(id: Long): Result<Unit> = try {
+        dao.deleteById(id)
+        Result.success(Unit)
+    } catch (e: Exception) {
+        Result.failure(e)
+    }
 }

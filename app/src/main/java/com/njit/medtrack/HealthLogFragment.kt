@@ -39,7 +39,23 @@ class HealthLogFragment : Fragment(R.layout.fragment_health_log) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_entries)
         val loading = view.findViewById<CircularProgressIndicator>(R.id.loading_entries)
         val empty = view.findViewById<TextView>(R.id.text_empty_entries)
-        adapter = SymptomEntryAdapter()
+
+        adapter = SymptomEntryAdapter(
+            onEdit = { entry -> showEditEntryDialog(view, entry) },
+            onDelete = { entry ->
+                MaterialAlertDialogBuilder(requireContext())
+                    .setMessage(getString(R.string.confirm_delete_entry))
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(R.string.action_delete) { _, _ ->
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            repo.deleteEntry(entry.id).onFailure {
+                                Snackbar.make(view, "Could not delete entry", Snackbar.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                    .show()
+            },
+        )
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
 
@@ -108,6 +124,57 @@ class HealthLogFragment : Fragment(R.layout.fragment_health_log) {
                     val result = repo.addEntry(entry)
                     result.onFailure {
                         Snackbar.make(root, "Could not save entry", Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+                dialog.dismiss()
+            }
+        }
+
+        dialog.show()
+    }
+
+    private fun showEditEntryDialog(root: View, existing: SymptomEntry) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_add_entry, null)
+        val layoutSymptoms = dialogView.findViewById<TextInputLayout>(R.id.layout_symptoms)
+        val inputSymptoms = dialogView.findViewById<TextInputEditText>(R.id.input_symptoms)
+        val severityLabel = dialogView.findViewById<TextView>(R.id.text_severity_value)
+        val slider = dialogView.findViewById<Slider>(R.id.slider_severity)
+        val inputNotes = dialogView.findViewById<TextInputEditText>(R.id.input_entry_notes)
+
+        inputSymptoms.setText(existing.symptoms)
+        slider.stepSize = 1f
+        slider.value = existing.severity.toFloat()
+        severityLabel.text = getString(R.string.severity_value_format, existing.severity)
+        inputNotes.setText(existing.notes)
+
+        slider.addOnChangeListener { _, value, _ ->
+            severityLabel.text = getString(R.string.severity_value_format, value.toInt())
+        }
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.dialog_title_edit_entry)
+            .setView(dialogView)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(R.string.action_save, null)
+            .create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val symptoms = inputSymptoms.text?.toString()?.trim().orEmpty()
+                if (symptoms.isEmpty()) {
+                    layoutSymptoms.error = getString(R.string.error_symptoms_required)
+                    return@setOnClickListener
+                }
+                layoutSymptoms.error = null
+
+                val updated = existing.copy(
+                    symptoms = symptoms,
+                    severity = slider.value.toInt(),
+                    notes = inputNotes.text?.toString()?.trim().orEmpty(),
+                )
+                viewLifecycleOwner.lifecycleScope.launch {
+                    repo.updateEntry(updated).onFailure {
+                        Snackbar.make(root, "Could not update entry", Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 dialog.dismiss()

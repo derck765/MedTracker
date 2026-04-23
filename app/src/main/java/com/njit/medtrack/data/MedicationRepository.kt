@@ -22,6 +22,15 @@ class MedicationRepository(context: Context) {
         Result.failure(e)
     }
 
+    suspend fun updateMedication(medication: Medication): Result<Unit> = try {
+        dao.update(medication)
+        ReminderScheduler.cancel(appContext, medication.id)
+        ReminderScheduler.schedule(appContext, medication)
+        Result.success(Unit)
+    } catch (e: Exception) {
+        Result.failure(e)
+    }
+
     suspend fun deleteMedication(medicationId: Long): Result<Unit> = try {
         dao.deleteById(medicationId)
         ReminderScheduler.cancel(appContext, medicationId)
