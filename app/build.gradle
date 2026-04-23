@@ -3,9 +3,16 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(rootProject.file("apikey.properties")))
+
 android {
     namespace 'com.njit.medtrack'
     compileSdk 36
+
+    buildFeatures {
+        buildConfig true
+    }
 
     defaultConfig {
         applicationId "com.njit.medtrack"
@@ -15,7 +22,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "GEMINI_API_KEY", "\"${apikeyProperties['GEMINI_API_KEY']}\""
     }
+
+
 
     buildTypes {
         release {
@@ -39,6 +49,7 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
 
+
     // Room
     implementation libs.room.runtime
     implementation libs.room.ktx
@@ -57,4 +68,7 @@ dependencies {
 
     // WorkManager for medication reminders
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
+
+    //Gemini api
+    implementation "com.google.ai.client.generativeai:generativeai:0.9.0"
 }

@@ -1,6 +1,7 @@
 package com.njit.medtrack
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.ai.client.generativeai.GenerativeModel
+import com.njit.medtrack.BuildConfig
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -36,7 +39,6 @@ class HealthLogFragment : Fragment(R.layout.fragment_health_log) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_entries)
         val loading = view.findViewById<CircularProgressIndicator>(R.id.loading_entries)
         val empty = view.findViewById<TextView>(R.id.text_empty_entries)
-
         adapter = SymptomEntryAdapter()
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
