@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.njit.medtrack.data.SymptomEntry
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -25,14 +27,28 @@ class SymptomEntryAdapter : ListAdapter<SymptomEntry, SymptomEntryAdapter.VH>(Di
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val date: TextView = itemView.findViewById(R.id.text_entry_date)
         private val severity: TextView = itemView.findViewById(R.id.text_entry_severity)
-        private val symptoms: TextView = itemView.findViewById(R.id.text_entry_symptoms)
+        private val chipGroup: ChipGroup = itemView.findViewById(R.id.chip_group_symptoms)
         private val notes: TextView = itemView.findViewById(R.id.text_entry_notes)
         private val fmt = SimpleDateFormat("MMM d, yyyy", Locale.getDefault())
 
         fun bind(item: SymptomEntry) {
             date.text = fmt.format(item.date)
             severity.text = itemView.context.getString(R.string.severity_label, item.severity)
-            symptoms.text = item.symptoms
+
+            chipGroup.removeAllViews()
+            item.symptoms
+                .split(",")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+                .forEach { symptom ->
+                    Chip(itemView.context).apply {
+                        text = symptom
+                        isClickable = false
+                        isCheckable = false
+                        chipGroup.addView(this)
+                    }
+                }
+
             notes.text = item.notes
             notes.isVisible = item.notes.isNotBlank()
         }
