@@ -1,6 +1,7 @@
 package com.njit.medtrack
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -11,9 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.njit.medtrack.data.DoseLogRepository
 import com.njit.medtrack.data.MedicationRepository
+import com.njit.medtrack.gemini.InteractionChecker
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -48,6 +51,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val dateFmt = SimpleDateFormat("EEEE, MMMM d, yyyy", Locale.US)
         view.findViewById<TextView>(R.id.text_date).text = dateFmt.format(Date())
+        val button = view.findViewById<MaterialButton>(R.id.btn_test_interaction)
+
+        button.setOnClickListener {
+            checkInteractions(view)
+        }
 
         job = viewLifecycleOwner.lifecycleScope.launch {
             combine(
@@ -73,7 +81,34 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
+    private fun showResultDialog(result: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Medication Interactions")
+            .setMessage(result)
+            .setPositiveButton("OK", null)
+            .show()
+    }
+    private fun checkInteractions(root: View) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val meds = medsRepo.getAllMedications()
 
+                if (meds.size < 2) {
+                    Snackbar.make(root, "Add at least two medications", Snackbar.LENGTH_LONG).show()
+                    return@launch
+                }
+
+                val checker = InteractionChecker(BuildConfig.GEMINI_API_KEY)
+
+                val result = checker.checkInteractions(meds)
+
+                showResultDialog(result)
+
+            } catch (e: Exception) {
+                Snackbar.make(root, "Error: ${e.message}", Snackbar.LENGTH_LONG).show()
+            }
+        }
+    }
     private fun renderChecklist(root: View, slots: List<DoseSlot>) {
         val checklist = root.findViewById<LinearLayout>(R.id.checklist_container)
         checklist.removeAllViews()

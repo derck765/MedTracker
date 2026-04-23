@@ -81,7 +81,6 @@ class HealthLogFragment : Fragment(R.layout.fragment_health_log) {
 
         newEntryBtn.setOnClickListener { showAddEntryDialog(view) }
     }
-
     private fun showAddEntryDialog(root: View) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_entry, null)
         val layoutSymptoms = dialogView.findViewById<TextInputLayout>(R.id.layout_symptoms)
