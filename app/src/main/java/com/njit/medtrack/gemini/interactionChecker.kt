@@ -11,7 +11,7 @@ class InteractionChecker(private val apiKey: String) {
 
         return try {
             val model = GenerativeModel(
-                modelName = "gemini-2.0-flash",
+                modelName = "gemini-3-flash-preview",
                 apiKey = apiKey
             )
 

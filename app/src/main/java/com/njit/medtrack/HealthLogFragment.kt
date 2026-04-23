@@ -1,7 +1,6 @@
 package com.njit.medtrack
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -9,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.ai.client.generativeai.GenerativeModel
-import com.njit.medtrack.BuildConfig
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -68,7 +65,6 @@ class HealthLogFragment : Fragment(R.layout.fragment_health_log) {
 
         newEntryBtn.setOnClickListener { showAddEntryDialog(view) }
     }
-
     private fun showAddEntryDialog(root: View) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_entry, null)
         val layoutSymptoms = dialogView.findViewById<TextInputLayout>(R.id.layout_symptoms)
