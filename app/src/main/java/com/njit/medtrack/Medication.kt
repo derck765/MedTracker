@@ -12,4 +12,5 @@ data class Medication(
     val frequency: String = "Daily",
     val tags: List<String>,
     val notes: String,
+    val rxcui: String? = null
 )

@@ -87,6 +87,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             .setPositiveButton("OK", null)
             .show()
     }
+
     private fun checkInteractions(root: View) {
         viewLifecycleOwner.lifecycleScope.launch {
             try {

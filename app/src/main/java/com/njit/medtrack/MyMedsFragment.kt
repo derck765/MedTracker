@@ -194,6 +194,7 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
                     frequency = inputFrequency.text?.toString()?.trim()?.ifEmpty { frequencies[0] } ?: frequencies[0],
                     tags = tags,
                     notes = inputNotes.text?.toString()?.trim().orEmpty(),
+                    rxcui = null,
                 )
                 viewLifecycleOwner.lifecycleScope.launch {
                     val result = repo.addMedication(medication)
