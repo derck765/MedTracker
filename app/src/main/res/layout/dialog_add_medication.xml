@@ -12,6 +12,24 @@
         android:paddingTop="8dp"
         android:paddingBottom="16dp">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_scan_medicine_autofill"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_medicine_autofill"
+            app:icon="@drawable/ic_camera_24"
+            app:iconGravity="textStart" />
+
+        <ProgressBar
+            android:id="@+id/progress_scan_medicine"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_med_name"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"

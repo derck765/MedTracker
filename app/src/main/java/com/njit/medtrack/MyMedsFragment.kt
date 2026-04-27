@@ -1,10 +1,15 @@
 package com.njit.medtrack
 
+import android.Manifest
 import android.app.TimePickerDialog
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
@@ -18,8 +23,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.njit.medtrack.data.MedicationRepository
+import com.njit.medtrack.gemini.MedicineLabelVisionAnalyzer
+import com.njit.medtrack.gemini.ParsedMedicineLabel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 
 class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
@@ -28,6 +37,58 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
     private lateinit var adapter: MedicationAdapter
     private var allItems: List<Medication> = emptyList()
     private var job: Job? = null
+
+    private var pendingScanDialogView: View? = null
+    private var pendingScanSnackRoot: View? = null
+
+    private val requestCameraPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) {
+                takePicturePreview.launch(null)
+            } else {
+                pendingScanDialogView = null
+                pendingScanSnackRoot = null
+                val anchor = view ?: return@registerForActivityResult
+                Snackbar.make(anchor, R.string.error_camera_permission, Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+    private val takePicturePreview =
+        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+            val dialogView = pendingScanDialogView
+            val snackRoot = pendingScanSnackRoot
+            pendingScanDialogView = null
+            pendingScanSnackRoot = null
+            if (dialogView == null || snackRoot == null) return@registerForActivityResult
+            if (bitmap == null) {
+                Snackbar.make(snackRoot, R.string.error_scan_no_image, Snackbar.LENGTH_SHORT).show()
+                return@registerForActivityResult
+            }
+            val progress = dialogView.findViewById<ProgressBar>(R.id.progress_scan_medicine)
+            val btn = dialogView.findViewById<MaterialButton>(R.id.btn_scan_medicine_autofill)
+            progress.isVisible = true
+            btn.isEnabled = false
+            val frequencies = resources.getStringArray(R.array.medication_frequencies)
+            viewLifecycleOwner.lifecycleScope.launch {
+                try {
+                    val result = withContext(Dispatchers.IO) {
+                        MedicineLabelVisionAnalyzer(BuildConfig.GEMINI_API_KEY).analyze(bitmap, frequencies)
+                    }
+                    result.onSuccess { applyParsedMedicineLabel(dialogView, it, frequencies) }
+                    result.onFailure { e ->
+                        Log.e("MyMedsFragment", "Scan failed", e)
+                        val msg = e.message?.takeIf { it.isNotBlank() }
+                            ?: getString(R.string.error_scan_failed)
+                        Snackbar.make(snackRoot, msg, Snackbar.LENGTH_LONG).show()
+                    }
+                } finally {
+                    if (dialogView.isAttachedToWindow) {
+                        progress.isVisible = false
+                        btn.isEnabled = true
+                    }
+                }
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,6 +162,10 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
 
         setupTimePicker(inputTime)
 
+        dialogView.findViewById<MaterialButton>(R.id.btn_scan_medicine_autofill).setOnClickListener {
+            beginMedicationScan(dialogView, root)
+        }
+
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.dialog_title_add_medication)
             .setView(dialogView)
@@ -169,6 +234,9 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
 
         setupTimePicker(inputTime)
 
+        dialogView.findViewById<MaterialButton>(R.id.btn_scan_medicine_autofill).isVisible = false
+        dialogView.findViewById<ProgressBar>(R.id.progress_scan_medicine).isVisible = false
+
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.dialog_title_edit_medication)
             .setView(dialogView)
@@ -210,6 +278,42 @@ class MyMedsFragment : Fragment(R.layout.fragment_my_meds) {
         }
 
         dialog.show()
+    }
+
+    private fun beginMedicationScan(dialogView: View, snackRoot: View) {
+        if (BuildConfig.GEMINI_API_KEY.isBlank()) {
+            Snackbar.make(snackRoot, R.string.error_gemini_no_key, Snackbar.LENGTH_LONG).show()
+            return
+        }
+        pendingScanDialogView = dialogView
+        pendingScanSnackRoot = snackRoot
+        val granted = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.CAMERA,
+        ) == PackageManager.PERMISSION_GRANTED
+        if (granted) {
+            takePicturePreview.launch(null)
+        } else {
+            requestCameraPermission.launch(Manifest.permission.CAMERA)
+        }
+    }
+
+    private fun applyParsedMedicineLabel(
+        dialogView: View,
+        parsed: ParsedMedicineLabel,
+        frequencies: Array<String>,
+    ) {
+        dialogView.findViewById<TextInputEditText>(R.id.input_med_name).setText(parsed.name)
+        dialogView.findViewById<TextInputEditText>(R.id.input_med_dosage).setText(parsed.dosage)
+        if (parsed.scheduleTime.isNotEmpty()) {
+            dialogView.findViewById<TextInputEditText>(R.id.input_med_time).setText(parsed.scheduleTime)
+        }
+        val freqField = dialogView.findViewById<android.widget.AutoCompleteTextView>(R.id.input_med_frequency)
+        val freq = frequencies.firstOrNull { it.equals(parsed.frequency, ignoreCase = true) }
+            ?: parsed.frequency
+        freqField.setText(freq, false)
+        dialogView.findViewById<TextInputEditText>(R.id.input_med_tags).setText(parsed.tags)
+        dialogView.findViewById<TextInputEditText>(R.id.input_med_notes).setText(parsed.notes)
     }
 
     private fun setupTimePicker(inputTime: TextInputEditText) {

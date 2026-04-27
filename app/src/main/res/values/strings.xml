@@ -78,6 +78,11 @@
     <string name="helper_med_tags">Separate with commas</string>
     <string name="hint_med_notes">Notes</string>
     <string name="error_name_required">Name is required</string>
+    <string name="scan_medicine_autofill">Scan Medicine for Autofill</string>
+    <string name="error_gemini_no_key">Add GEMINI_API_KEY in apikey.properties to use scanning.</string>
+    <string name="error_camera_permission">Camera permission is needed to scan a label.</string>
+    <string name="error_scan_no_image">No photo captured.</string>
+    <string name="error_scan_failed">Could not read the label. Try a clearer photo.</string>
 
     <!-- Add Health Log Entry dialog -->
     <string name="dialog_title_add_entry">New Health Log Entry</string>

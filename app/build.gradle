@@ -4,7 +4,10 @@ plugins {
 }
 
 def apikeyProperties = new Properties()
-apikeyProperties.load(new FileInputStream(rootProject.file("apikey.properties")))
+def apikeyFile = rootProject.file("apikey.properties")
+if (apikeyFile.exists()) {
+    apikeyProperties.load(new FileInputStream(apikeyFile))
+}
 
 android {
     namespace 'com.njit.medtrack'
@@ -22,7 +25,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "GEMINI_API_KEY", "\"${apikeyProperties['GEMINI_API_KEY']}\""
+        buildConfigField "String", "GEMINI_API_KEY", "\"${apikeyProperties.getProperty("GEMINI_API_KEY", "")}\""
     }
 
 
