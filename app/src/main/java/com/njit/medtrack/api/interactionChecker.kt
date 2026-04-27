@@ -1,4 +1,4 @@
-package com.njit.medtrack.gemini
+package com.njit.medtrack.api
 
 import android.util.Log
 import com.google.ai.client.generativeai.GenerativeModel

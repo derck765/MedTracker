@@ -23,8 +23,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.njit.medtrack.data.MedicationRepository
-import com.njit.medtrack.gemini.MedicineLabelVisionAnalyzer
-import com.njit.medtrack.gemini.ParsedMedicineLabel
+import com.njit.medtrack.api.MedicineLabelVisionAnalyzer
+import com.njit.medtrack.api.ParsedMedicineLabel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
