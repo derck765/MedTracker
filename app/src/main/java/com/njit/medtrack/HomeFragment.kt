@@ -1,7 +1,6 @@
 package com.njit.medtrack
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -16,7 +15,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.njit.medtrack.data.DoseLogRepository
 import com.njit.medtrack.data.MedicationRepository
-import com.njit.medtrack.gemini.InteractionChecker
+import com.njit.medtrack.api.InteractionChecker
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -88,6 +87,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             .setPositiveButton("OK", null)
             .show()
     }
+
     private fun checkInteractions(root: View) {
         viewLifecycleOwner.lifecycleScope.launch {
             try {

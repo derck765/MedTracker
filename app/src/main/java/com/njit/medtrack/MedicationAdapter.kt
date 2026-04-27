@@ -38,6 +38,7 @@ class MedicationAdapter(
 
         private val name: TextView = itemView.findViewById(R.id.text_name)
         private val dosage: TextView = itemView.findViewById(R.id.text_dosage)
+        private val normalized: TextView = itemView.findViewById(R.id.text_normalized)
         private val scheduleTime: TextView = itemView.findViewById(R.id.text_schedule_time)
         private val notes: TextView = itemView.findViewById(R.id.text_notes)
         private val rowTags: LinearLayout = itemView.findViewById(R.id.row_tags)
@@ -50,6 +51,20 @@ class MedicationAdapter(
             scheduleTime.text = item.scheduleTime
             notes.text = item.notes
             notes.isVisible = item.notes.isNotBlank()
+
+            val generic = item.normalizedName
+            val rxcui = item.rxcui
+
+            if (!generic.isNullOrEmpty() && generic.lowercase() != item.name.lowercase()) {
+                normalized.visibility = View.VISIBLE
+                normalized.text = "$generic - RxCUI: $rxcui"
+            } else if (!rxcui.isNullOrEmpty()) {
+                normalized.visibility = View.VISIBLE
+                normalized.text = "RxCUI: $rxcui"
+            } else {
+                normalized.visibility = View.VISIBLE
+                normalized.text = "Unknown RxCUI"
+            }
 
             rowTags.removeAllViews()
             val ctx = itemView.context
