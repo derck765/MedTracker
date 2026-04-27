@@ -57,7 +57,7 @@ class MedicationAdapter(
 
             if (!generic.isNullOrEmpty() && generic.lowercase() != item.name.lowercase()) {
                 normalized.visibility = View.VISIBLE
-                normalized.text = "$generic (RxCUI: $rxcui)"
+                normalized.text = "$generic - RxCUI: $rxcui"
             } else if (!rxcui.isNullOrEmpty()) {
                 normalized.visibility = View.VISIBLE
                 normalized.text = "RxCUI: $rxcui"
