@@ -62,7 +62,8 @@ class MedicationAdapter(
                 normalized.visibility = View.VISIBLE
                 normalized.text = "RxCUI: $rxcui"
             } else {
-                normalized.visibility = View.GONE
+                normalized.visibility = View.VISIBLE
+                normalized.text = "Unknown RxCUI"
             }
 
             rowTags.removeAllViews()
