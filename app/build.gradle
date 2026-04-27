@@ -48,9 +48,20 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
+    // Unit tests (run on JVM, not bundled in app APK)
     testImplementation libs.junit
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.androidx.arch.core.testing
+
+    // Instrumented / integration tests (run on a device, not bundled in release APK)
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation libs.androidx.test.core.ktx
+    androidTestImplementation libs.androidx.test.runner
+    androidTestImplementation libs.androidx.test.rules
+    androidTestImplementation libs.kotlinx.coroutines.test
+    androidTestImplementation libs.androidx.arch.core.testing
+    androidTestImplementation libs.room.testing
 
 
     // Room
