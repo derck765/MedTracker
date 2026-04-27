@@ -50,6 +50,18 @@
                 app:layout_constraintStart_toEndOf="@id/icon_container"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Lisinopril" />
+            <TextView
+                android:id="@+id/text_normalized"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/text_name"
+                app:layout_constraintEnd_toEndOf="@id/text_name"
+                app:layout_constraintTop_toBottomOf="@id/text_name"
+                tools:text="Ibuprofen (RxCUI: 5640)" />
 
             <TextView
                 android:id="@+id/text_dosage"
@@ -58,8 +70,8 @@
                 android:textAppearance="?attr/textAppearanceBodySmall"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 app:layout_constraintEnd_toEndOf="@id/text_name"
-                app:layout_constraintStart_toStartOf="@id/text_name"
-                app:layout_constraintTop_toBottomOf="@id/text_name"
+                app:layout_constraintStart_toStartOf="@id/text_normalized"
+                app:layout_constraintTop_toBottomOf="@id/text_normalized"
                 tools:text="10mg" />
 
             <ImageButton
