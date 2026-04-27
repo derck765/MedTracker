@@ -20,25 +20,35 @@ class InteractionChecker(private val apiKey: String) {
             }
 
             val medList = meds.joinToString("\n") {
-                "- ${it.name} ${it.dosage}"
+                val generic = it.normalizedName ?: it.name
+                val brand = it.name
+                val rxcui = it.rxcui ?: "unknown"
+
+                if (generic != brand) {
+                    "- $generic (brand: $brand, RxCUI: $rxcui) ${it.dosage}"
+                } else {
+                    "- $generic (RxCUI: $rxcui) ${it.dosage}"
+                }
             }
 
             val prompt = """
-                A user is taking the following medications:
-                $medList
-
-                Are there any harmful drug interactions?
-
-                Respond in this format:
-
-                Interactions:
-                - list interactions or say "None"
-
-                Severity:
-                - low / moderate / high
-
-                Advice:
-                - short explanation for a patient
+            A user is taking the following medications (with standardized drug names and RxCUI identifiers):
+            
+            $medList
+            
+            Check for drug-to-drug interactions.
+            
+            Respond in this format:
+            
+            Interactions:
+            - list interactions or say "None". List drugs in this format: drug name (brand). 
+            If drug name and brand name are the same do not include both.
+            
+            Severity:
+            - none/low / moderate / high
+            
+            Advice:
+            - short explanation for a patient
             """.trimIndent()
 
             Log.d("GEMINI_CALL", "Sending meds:\n$medList")

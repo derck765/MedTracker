@@ -17,14 +17,27 @@ class MedicationRepository(context: Context) {
         dao.watchAll().map { Result.success(it) }
 
     suspend fun addMedication(medication: Medication): Result<Unit> = try {
-        val rxcui = try {
+        val initialRxcui = try {
             rxNormService.getRxCui(medication.name)
         } catch (e: Exception) {
             null
         }
-        val updatedMedication = medication.copy(rxcui = rxcui)
+        val (ingredientRxcui, normalizedName) = initialRxcui?.let {
+            try {
+                rxNormService.getDrugName(it)
+            } catch (e: Exception) {
+                Pair(null, null)
+            }
+        } ?: Pair(null, null)
+        val updatedMedication = medication.copy(
+            rxcui = ingredientRxcui,
+            normalizedName = normalizedName
+        )
         val id = dao.insert(updatedMedication)
-        android.util.Log.d("RXNORM", "Medication: ${medication.name}, RxCUI: $rxcui")
+        android.util.Log.d(
+            "RXNORM",
+            "Input: ${medication.name} → RxCUI: $ingredientRxcui → Name: $normalizedName"
+        )
         ReminderScheduler.schedule(appContext, updatedMedication.copy(id = id))
         Result.success(Unit)
     } catch (e: Exception) {
