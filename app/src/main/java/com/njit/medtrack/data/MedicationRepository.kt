@@ -44,10 +44,33 @@ class MedicationRepository(context: Context) {
         Result.failure(e)
     }
     suspend fun updateMedication(medication: Medication): Result<Unit> = try {
-        dao.update(medication)
+
+        val newRxcui = try {
+            rxNormService.getRxCui(medication.name)
+        } catch (e: Exception) {
+            null
+        }
+
+        val (ingredientRxcui, normalizedName) = newRxcui?.let {
+            try {
+                rxNormService.getDrugName(it)
+            } catch (e: Exception) {
+                Pair(null, null)
+            }
+        } ?: Pair(null, null)
+
+        val updatedMedication = medication.copy(
+            rxcui = ingredientRxcui ?: newRxcui,
+            normalizedName = normalizedName
+        )
+
+        dao.update(updatedMedication)
+
         ReminderScheduler.cancel(appContext, medication.id)
-        ReminderScheduler.schedule(appContext, medication)
+        ReminderScheduler.schedule(appContext, updatedMedication)
+
         Result.success(Unit)
+
     } catch (e: Exception) {
         Result.failure(e)
     }
