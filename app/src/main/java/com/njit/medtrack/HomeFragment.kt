@@ -132,9 +132,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 card.strokeWidth = 0
                 icon.setImageResource(R.drawable.ic_check_small)
                 icon.background = null
-                badge.visibility = View.VISIBLE
-                btnMark.visibility = View.GONE
-                btnMark.setOnClickListener(null)
+                badge.visibility = View.GONE
+
+                btnMark.visibility = View.VISIBLE
+                btnMark.text = "Unmark"
+                btnMark.setOnClickListener { unmarkTaken(slot) }
+
             } else {
                 card.setCardBackgroundColor(
                     ContextCompat.getColor(requireContext(), R.color.md_surface),
@@ -143,10 +146,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 icon.setImageDrawable(null)
                 icon.setBackgroundResource(R.drawable.bg_circle_outline)
                 badge.visibility = View.GONE
+
                 btnMark.visibility = View.VISIBLE
+                btnMark.text = "Mark as Taken"
                 btnMark.setOnClickListener { markTaken(slot) }
             }
             checklist.addView(row)
+        }
+    }
+
+    private fun unmarkTaken(slot: DoseSlot) {
+        val root = view ?: return
+        viewLifecycleOwner.lifecycleScope.launch {
+            val result = doseRepo.unmarkTaken(slot.medicationId, slot.scheduledFor)
+            result.onFailure {
+                Snackbar.make(root, "Could not unmark ${slot.name}", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 

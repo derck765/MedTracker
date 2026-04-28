@@ -27,6 +27,13 @@ class DoseLogRepository(context: Context) {
         Result.failure(e)
     }
 
+    suspend fun unmarkTaken(medicationId: Long, scheduledFor: Long): Result<Unit> = try {
+        dao.deleteLog(medicationId, scheduledFor)
+        Result.success(Unit)
+    } catch (e: Exception) {
+        Result.failure(e)
+    }
+
     private fun startOfToday(): Long = Calendar.getInstance().apply {
         set(Calendar.HOUR_OF_DAY, 0)
         set(Calendar.MINUTE, 0)

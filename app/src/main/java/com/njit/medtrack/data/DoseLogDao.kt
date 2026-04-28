@@ -18,4 +18,10 @@ interface DoseLogDao {
             "ORDER BY scheduledFor ASC",
     )
     fun watchLogsForDay(startOfDay: Long, endOfDay: Long): Flow<List<DoseLog>>
+
+    @Query("""
+        DELETE FROM dose_logs
+        WHERE medicationId = :medicationId AND scheduledFor = :scheduledFor
+        """)
+    suspend fun deleteLog(medicationId: Long, scheduledFor: Long)
 }
