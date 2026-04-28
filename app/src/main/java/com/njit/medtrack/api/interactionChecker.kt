@@ -45,7 +45,7 @@ class InteractionChecker(private val apiKey: String) {
             If drug name and brand name are the same do not include both.
             
             Severity:
-            - none/low / moderate / high
+            - None / Low / Moderate / High
             
             Advice:
             - short explanation for a patient
