@@ -10,7 +10,7 @@
 
 ### Description
 
-MedTrack is a smart medication management assistant designed to ensure patient safety and adherence to medical prescriptions. It allows users to digitize their pill schedules, receive high-priority alerts for doses, and log symptoms to track their health over time. By integrating a pharmacy API, the app provides a critical layer of safety by automatically flagging dangerous drug-to-drug interactions, making it an essential tool for chronic patients, the elderly, and their caregivers
+MedTrack is a smart medication management assistant designed to ensure patient safety and adherence to medical prescriptions. It allows users to digitize their pill schedules, receive high-priority alerts for doses, and log symptoms to track their health over time. The app provides a critical layer of safety by flagging dangerous drug-to-drug interactions, making it an essential tool for chronic patients, the elderly, and their caregivers
 
 ### App Evaluation
 
@@ -24,7 +24,7 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 * Includes a symptom checker/logger where users can note how they feel daily to track side effects or recovery progress over time.
 
-* Integrates RxNorm, RxCUI, and OpenFDA APIs to automatically flag potentially dangerous drug-to-drug interactions based on the user's active medication list.
+* Integrates RxNorm, RxCUI, and Gemini APIs to flag potentially dangerous drug-to-drug interactions based on the user's active medication list.
 
 ### Evaluation
 
@@ -42,7 +42,6 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ### 1. User Features (Required and Optional)
 **Required Features**
-* **User Authentication:** Sign-up and Login functionality (Email/Password or Google Auth) to secure private health data.
 * * **Medication Logging:** User can enter drug name, dosage, and frequency.
 * **Scheduling & Notifications:** Automated push alerts triggered at specific times to remind the user to take their medicine.
 * **Dose Confirmation:** A simple "Mark as Taken" button within the notification or app to log adherence.
@@ -57,7 +56,6 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 ### 2. Screen Archetypes
 
-* **Log In/Sign Up:** User authentication screens to access the profile.
 * **Dashboard/Home:** Displays the "Next Dose" countdown and a daily checklist of medications.
 * **Medication Library:** A list of all current prescriptions where users can add, edit, or delete entries.
 * **Add Medication:** A form-based screen to input drug details and set the schedule.
@@ -74,8 +72,7 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 
 **Flow Navigation (Screen to Screen)**
 
-* **Launch App** $\rightarrow$ If not logged in $\rightarrow$ **Login/Sign Up Screen**
-* **Login/Sign Up** $\rightarrow$ Successfully Authenticated $\rightarrow$ **Home Screen**
+* **Launch App** $\rightarrow$ **Home Screen**
 * **Home Screen** $\rightarrow$ Click "Add" $\rightarrow$ **Add Medication Screen**
 * **My Meds Screen** $\rightarrow$ Click specific drug $\rightarrow$ **Medication Details/Edit Screen**
 * **Add Medication Screen** $\rightarrow$ Submit $\rightarrow$ **Interaction Alert Screen** (if a conflict is found)
@@ -123,12 +120,12 @@ Set up Android project and configured dependencies
 <img width="3565" height="1930" alt="image" src="https://github.com/user-attachments/assets/7878849e-9d59-4033-8eb6-f9b304740a0e" />
 
 ## Completed user stories
-- Implement Functionality for adding New Medications
-- Implement Dose Confirmation ("Mark as Taken") Functionality
-- Implement Navigation Between Screens
-- Set up Local Room Database (Medication & Symptom Entry Entities)
-- Setup Database to Medication & Symptom UI
-- Implement Dashboard / Home Screen Functionality
+- [X] Implement Functionality for adding New Medications
+- [X] Implement Dose Confirmation ("Mark as Taken") Functionality
+- [X] Implement Navigation Between Screens
+- [X]  Set up Local Room Database (Medication & Symptom Entry Entities)
+- [X] Setup Database to Medication & Symptom UI
+- [X] Implement Dashboard / Home Screen Functionality
 
 ## List any pending user stories / any user stories you decided to cut from the original requirements
 
