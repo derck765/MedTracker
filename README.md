@@ -94,7 +94,7 @@ MedTrack is a smart medication management assistant designed to ensure patient s
 <img width="820" height="252" alt="Screenshot 2026-03-23 221017" src="https://github.com/user-attachments/assets/4c2e21bf-b6ab-4e98-bc16-6db598615471" />
 <img width="820" height="867" alt="add_meds" src="https://github.com/user-attachments/assets/0d3980f7-fbd0-451e-b938-d63e4e61852d" />
 
-# Milestone 2 - Build Sprint 1 (Unit 8)
+# Milestone 2 - Build Sprint 1
 
 ## GitHub Project Board
 <img width="1918" height="867" alt="milestones" src="https://github.com/user-attachments/assets/06cacda2-cc17-4ec2-b4fb-1ff0a58d3be2" />
@@ -115,7 +115,7 @@ Set up Android project and configured dependencies
 
 <br>
 
-# Milestone 3 - Build Sprint 2 (Unit 9)
+# Milestone 3 - Build Sprint 2
 ## GitHub Project board
 <img width="3565" height="1930" alt="image" src="https://github.com/user-attachments/assets/7878849e-9d59-4033-8eb6-f9b304740a0e" />
 
